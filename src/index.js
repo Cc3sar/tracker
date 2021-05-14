@@ -6,6 +6,7 @@ import cors from 'cors';
 //routes
 import home from './home';
 import userRoutes from './apiServices/users/user.routes';
+import taskRoutes from './apiServices/tasks/task.routes';
 
 mongoConnect();
 
@@ -20,5 +21,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(home);
 
 app.use('/api/users', userRoutes);
+app.use('/api/users', taskRoutes);
 
 app.listen(appConfig.port, _ => console.log(`Server On PORT ${ appConfig.port }`));
