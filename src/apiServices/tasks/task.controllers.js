@@ -5,8 +5,7 @@ const createTask = (req, res) => {
         userId: req.params._id,
         description: req.body.description,
         duration: req.body.duration,
-        date: new Date(req.body.date),
-        dateFormatted: new Date(req.body.date).toUTCString()
+        date: new Date(req.body.date)
     });
 
     newTask.save();
@@ -14,7 +13,7 @@ const createTask = (req, res) => {
     res.json({
         description: newTask.description,
         duration: newTask.duration,
-        date: newTask.dateFormatted
+        date: newTask.date
     });
 };
 
