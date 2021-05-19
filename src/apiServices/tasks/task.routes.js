@@ -1,9 +1,11 @@
 import { Router } from 'express';
-import createTask from './task.controllers';
-import verifyTask from '../../middlewares/verifyTask.middleware';
+import taskControllers from './task.controllers';
+import taskMiddlewares from '../../middlewares/verifyTask.middleware';
 
 const router = Router();
 
-router.post('/:_id/exercises', verifyTask, createTask);
+router.post('/:_id/exercises', taskMiddlewares.verifyTask, taskControllers.createTask);
+
+router.get('/:_id/logs', taskMiddlewares.userTask, taskControllers.showUserTasks);
 
 export default router;

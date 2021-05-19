@@ -5,6 +5,8 @@ const userSchema = new Schema({
         type: String,
         unique: true
     }
+}, {
+    versionKey: false
 });
 
 export default model("User", userSchema);

@@ -10,4 +10,13 @@ const createUser = async (req, res) => {
     res.json({ username: newUser.username, id: newUser._id })
 };
 
-export default createUser;
+const showUsers = async (req, res) => {
+    const users = await User.find();
+
+    res.send(users);
+};
+
+export default {
+    createUser,
+    showUsers
+};

@@ -14,6 +14,9 @@ const taskSchema = new Schema({
         type: Number
     },
     date: Date
+    /*dateFormatted: String*/ 
+}, {
+    versionKey: false
 });
 
 export default model("Task", taskSchema);

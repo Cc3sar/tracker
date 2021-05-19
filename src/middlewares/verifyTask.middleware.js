@@ -1,8 +1,6 @@
 import User from '../apiServices/users/user.model';
 
 const verifyTask = async (req, res, next) => {
-    console.log(req.params._id);
-
     const checkUser = await User.findById(req.params._id);
 
     if(!checkUser) return res.send("not found");
@@ -16,4 +14,17 @@ const verifyTask = async (req, res, next) => {
     next();
 };
 
-export default verifyTask;
+const userTask = async (req, res, next) => {
+    const checkUser = await User.findById(req.params._id);
+
+    if(!checkUser) return res.send("not found");
+
+    req.body.userTask = checkUser;
+
+    next();
+};
+
+export default {
+    verifyTask,
+    userTask
+};
