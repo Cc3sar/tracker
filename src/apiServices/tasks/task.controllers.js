@@ -28,11 +28,14 @@ const showUserTasks = async (req, res) => {
     const count = await Task.find({ userId: { $in: req.params._id } }).count();
     const user = req.body.userTask;
     let showData;
+    const limitInt = parseInt(limit);
+
+    console.log(typeof limit)
     try {
-        if(!from || !to || !limit) {
+        if(!from || !to || !limit ) {
             showData = await Task.find({ userId: { $in: req.params._id } }, { _id: 0, userId: 0 });
         } else {
-            showData = await Task.find({ $and: [{ date:{ $gte: new Date(from), $lte: new Date(to) } } ] }, { _id: 0, userId: 0 }).limit(limit);
+            showData = await Task.find({ date:{ $gte: new Date(from), $lte: new Date(to) } }, { _id: 0, userId: 0 }).limit(limitInt);
         }
         
         res.json({

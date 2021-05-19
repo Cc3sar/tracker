@@ -7,7 +7,7 @@ const createUser = async (req, res) => {
 
     newUser.save();
 
-    res.json({ username: newUser.username, id: newUser._id })
+    res.json({ username: newUser.username, _id: newUser._id })
 };
 
 const showUsers = async (req, res) => {
